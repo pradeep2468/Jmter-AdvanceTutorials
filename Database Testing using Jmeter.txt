@@ -1,0 +1,35 @@
+How to create a Database Test Plan.
+
+Pre-Requisite : MySql database.
+
+This configuration used to hit/query/request the Mysql database and get the response back to jmeter.
+
+
+1.	Download the mysql jdbc jar from the below url.
+  	https://dev.mysql.com/downloads/connector/j/5.0.html
+2.	Copy the mysql-connector-java-5.1.44-bin.jar(mysqljdbc jar) to the jmeter/lib folder.
+3.	Start Jmeter gui from the jmeter/bin folder.
+4.	To the Test plan add Thread group-> Right click and add JDBC connection configuration element from the config element.
+5.	At Variable Name Bound to pool section provide the Variable Name which is mandatory.(Ex:mydb)
+6.	Let the values be default for Connection pool, Validation by pool.
+7.	At Database Connection Configuration section: Enter the required values.
+	Ex: For MySQL jdbc connection url is  
+	Database URL : jdbc:mysql://localhost:3306/world
+	JDBC Driver class : com.mysql.jdbc.Driver
+	Username : root
+	Password : ....
+8.	Goto JDBC Request-> Enter same variable name which is specified at JDBC Connection configuration
+	EX: mydb
+9.	select the Query type whether statement is of Select/Update/Callable statement depending on your requirement.
+	Ex: Select Statement
+10.	Enter the select query to connect db and which you want to retrieve data.
+	Ex: select * from world.countrylanguage;
+11.	Can also add Response assertion to the jdbc request.
+12.	Enter the response to check in the patterns to test of Response assertion and apply it to Jmeter variable where you can give the column and row nummber to validate the response.(Ex: col2_2 means column no.2 and second row)
+13.	In the jdbc request, provide the column number to be validated.( Ex: ,col2,,)
+14:	Add View Results Tree to the Thread group and Run.
+
+References : 
+https://www.youtube.com/watch?v=oy53KAKHpts
+https://www.youtube.com/watch?v=SmSieTKYky8
+https://www.youtube.com/watch?v=fH03i2FjYa8	

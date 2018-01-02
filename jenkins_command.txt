@@ -1,0 +1,2 @@
+Jenkins Execution :
+E:\JMeter\apache-jmeter-3.3\bin\jmeter.bat -Jjmeter.save.saveservice.output_format=xml -n -t E:\JMeter_Scripts\eCommerce_demo.jmx -l E:\JMeter_Scripts\eCommerce_demo.jtl

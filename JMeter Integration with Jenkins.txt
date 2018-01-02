@@ -1,0 +1,44 @@
+Integration of JMeter and Jenkins
+
+JMeter - Leading open source tool for Performance Testing
+Jenkins - Leading open source tool for Continuous Integration
+
+Jenkins
+Is a java application and platform independant i.e can be used on any platform.
+Jenkins used for continuous integration and continuous delivery.
+
+Download:
+Download jenkins war file from the url : https://jenkins.io
+Place the war file on any location on your system
+Go to command prompt->to the folder where the jenkins.war is present
+enter command "java -jar jenkins.war" and click enter
+Go to browser and enter http://localhost:8080 (8080 is the port on which jenkins will be running)
+Unlock jenkins by the useername:admin & password which created in the C:\Users\pradeep.savulla\.jenkins\secrets\initialAdminPassword.txt
+Inorder to run jmeter scripts from jenkins, you need to deploy the performance plugin. You have two ways to dao that.
+1.Login to the jenkins, click on the Manage Jenkins, click on manage plugins, goto Available tab and search/check for the Performance plugin, install and restart.
+2.Download jenkins performance.hpi, put into Plugins folder and then restart the jenkins.
+Goto Jmeter/bin->open user.properties file - add line "jmeter.save.saveservice..output_format=xml"
+
+Create JMeter test
+Run the test plan from the command line interface.
+To ensure the test runs in jenkins because the same command has to be used in jenkins
+jmeter -jjmeter.save.saveservice.output_format=xml -n -t E:\JMeter\Scripts\eCommerce_demo.jmx -l E:\JMeter\Scripts\eCommerce_demo.jtl
+
+Login to jenkins and add a job in jenkins by clicking on create new jobs.
+Enter an Item name say jmeter_eCommerceDemo -> select Freestyle Project and click on OK.
+Configuration page displays.
+Now go to Build section and click on Add build step drop down.
+As you are on windows syste, select Execute windows batch command.
+enter the command: cd E:\JMeter\apache-jmeter-3.3\bin\jmeter -jjmeter.save.saveservice.output_format=xml -n -t E:\JMeter\Scripts\eCommerce_demo.jmx -l E:\JMeter\Scripts\eCommerce_demo.jtl
+
+Next, goto Add Post-build action.
+select Publish Performance test result report
+configure necessary chart which you want to display during execution and then save it
+
+Run
+
+References:
+
+https://www.youtube.com/watch?v=mYGQPj78YhI
+
+

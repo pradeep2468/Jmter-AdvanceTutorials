@@ -1,0 +1,23 @@
+JMeter Distributed(Remote) Testing - Master & Slave conept
+
+Pre-Requisites :
+1.	Make sure all the machines are in the same subnet. If machines are not same subnet then they will not recognize each other in the network.
+2.	Make sure jmeter can access the server(AUT).
+3.	Make sure the same version of Jmeter are installed on all the machines(Master & Slaves) to avoid unanticipated issues.
+4.	The Firewall on all systems are turned off because firewall may be blocking the traffic.
+
+Terminology :
+	Master  - The machine running JMeter GUI, which controls each slave and the test.
+	Slave	- The machine running jmeter-server.bat, which takes commands from the Master Jmeter GUI and send the request to server under test.
+	Target	- The web application server under test, get request from slaves.
+
+Steps :
+
+1.	On the Slave machine, using cmd prompt goto the jmeter/bin folder and enter the command.
+	"jmeter-server -Djava.rmi.server.hostname=<ip address of the slave machine>"
+	Initially, slave machine are private. So inorder to make it public the above command is used on slave machine using command prompt.
+2.	On slave machine, go to jmeter/bin folder and the execute the file "jmeter-server.bat" where you can see the "Created remote object: UnicastServerRef.... along 	with ip address. Note down the ip address.
+3.	Now goto Master machine to the jmeter/bin folder and open & edit the jmeter.properties file by adding the slave ip address.
+	Search for the "remote_hosts" and add the ip address of the each slave with comma delimited then save and close the file.
+4.	Open Jmeter Gui in the Master machine and open test plan.
+5.	Click Run on the menu bar of the Jmeter GUI, select Remote Start -> select the ip address of the slave machine from where the load has to be pumped or can 		select Remote Start All where load will be pumped from all the slave machines on to the AUT.

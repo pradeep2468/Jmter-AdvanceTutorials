@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/32321745/jmeter-read-files-from-directory
+https://stackoverflow.com/questions/39996999/jmeter-script-to-upload-all-files-in-a-folder

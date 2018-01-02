@@ -1,0 +1,22 @@
+To test FTP Upload & Download using JMeter
+
+FTP Url: http://www.swfwmd.state.fl.us/data/ftp/
+Server: ftp.swfwmd.state.fl.us
+User Name: Anonymous
+Password : any valid email address
+
+Steps:
+
+1.	Create a Testplan add ThreadGroup and to it , add FTP request sampler.
+2.	Enter the FTP connection parameters. Server details:ftp.swfwmd.state.fl.us in the FTP request Server Name or IP.
+3.	Enter username : Anonymous & Password : any valid email address.
+4.	Inorder to get the file or download to the local system then check GET(RETR) & if you want the local file to upload to the FTP server, then check PUT(STOR).
+5.	Check Save File in Response : To check the file saved in the response of the Jmeter i.e View Results Tree (file downloaded or uploaded)
+5.	Goto the FTP location to check what files are present and based on that you can Get(download) or Put(upload).
+6.	At Remote file, enter the path of the remote FTP server file location. (Ex: /README.txt)
+7.	At Local File, enter the path of the local system where you want the file to be downloaded.(Ex:E://Jmeter_Scripts/FTP)
+8.	Add view results tree to the Threadgroup and run the script. You may also add the FTP Request Defaults, so that there is no need of adding the server details 		in every request.
+
+References:
+https://www.youtube.com/watch?v=tLtHW6edVlo
+http://www.swfwmd.state.fl.us/data/ftp/

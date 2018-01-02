@@ -1,0 +1,25 @@
+Mobile Performance Testing - Jmeter Script developement.
+
+Pre-Requisites :
+1.	Both Desktop/Laptop and Mobile device must be on the same Wlan.
+2.	JMeter version 3.0, Android phone (versions above Jellybean) or iPhone (version 8.0 onwards)
+
+Steps:
+1.	Start Jmeter on your test machine(desktop/laptop).
+2.	Create a test plan with ThreadGroup and necessary elements in jmeter or can create directly using a Recording Tempplate.
+3.	Goto HTTP(S) Test script recorder on WorkBench. At Global settings, set port for recording i.e give any port(Ex:8181). And set url patterns to Exclude.
+4.	Create Root CA certificate. This is present in the Jmeter bin directory. Incase if your recording in jmeter for the first time then Root CA 		certificate:ApacheJMeterTemporaryRootCA created in JMter bin directory when you click on Start button at Http(s) Test Script Recorder.
+5.	Copy the same Root CA certificate to the Mobile Device and install the certificate.
+
+	Configure the Mobile Device:
+6.	Make sure Mobile device and Test machine is on the same wlan(Network) or connect to the same Wi-Fi.
+7.	Note the ip of the test machine. Can use ipconfig command in the command prompt to get the ip address.
+8.	Goto Settings in the  Mobile device, click WiFi connections and long press the wifi you are connected to.
+9.	Click on Modify Network->on the Menu options you have Show advanced option check that, go down at Proxy select Manual-> give the ip address of the test machine 	as hostname, enter port number which configured in jmeter Test script recorder Global settings, select DHCP for IPv4 settings and click save. Now our Android 		mobile is ready with set-up.
+10.	Start Recording : Actions which you do on mobile device should get recorded in Jmeter. To get this goto Jmeter->Http(s) Test script recorder->click on Start. 		Now on Mobile device, do all the actions on the application which you want to capture the request. As ip address & port no is set as proxy, all the requests 		gets captured in the Jmeter Controller.
+11.	After recording is done click stop in Test script recorder. Then add listeners to the Thread group and run the script(Do enhancements to the script if required 	for the script to pass).
+
+References : 
+https://www.youtube.com/watch?v=JFDcgKQ8VFw
+http://blogs.quovantis.com/mobile-performance-testing-using-jmeter/
+https://www.youtube.com/watch?v=vfs3sSuFQno

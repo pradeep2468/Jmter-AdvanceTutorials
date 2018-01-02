@@ -1,0 +1,14 @@
+How to export/save test results to csv/jtl/xml file in Jmeter
+
+Steps to be followed:
+Develop the jmeter script with all the enhancements required for a successful script.
+Add the Simple Data Writer to the Thread group.
+ThreadGroup -> Rightclick Add -> goto Listener -> select Simple Data Writer.
+Simple Data Writer writes the test results to the csv/jtl/txt/xml file.
+Here in this example, using csv as it is easier to generate dashboard report in JMeter.
+click on SimpleDataWriter, give/browse the path where the csv file has to be saved in the Filename field.
+End of the path, give the filename where all the results will be save to it.
+Save the testplan and run the jmeter script which will save all test results into file using Simple Data Writer Listener.
+
+Refernece :
+https://www.youtube.com/watch?v=AnpX7xGImNk

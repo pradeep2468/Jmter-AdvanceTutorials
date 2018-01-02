@@ -1,0 +1,92 @@
+How To generate Report Dashboard.
+
+Configurations to be done to generate Report Dashboard in HTML format.
+
+1. Open reportgenerator.properties from the jmeter/bin directory.
+2. Copy all the Report Configuration elements.
+3. Then open user.properties file from the jmeter/bin directory.
+4. Paste Report configuration elements into user.properties file then save it.
+5. Open saveservice properties file from the jmeter/bin folder.
+6. Copy the Save Service configuration elements.
+7. Paste Save Service configuration elements into user.properties file and save it.
+8. Also uncomment required Results file configuration elements in the jmeter.properties file from the jmeter/bin folder.
+
+#---------------------------------------------------------------------------
+# Results file configuration
+#---------------------------------------------------------------------------
+
+# This section helps determine how result data will be saved.
+# The commented out values are the defaults.
+
+# legitimate values: xml, csv, db.  Only xml and csv are currently supported.
+ jmeter.save.saveservice.output_format=csv
+
+
+# true when field should be saved; false otherwise
+
+# assertion_results_failure_message only affects CSV output
+#jmeter.save.saveservice.assertion_results_failure_message=true
+#
+# legitimate values: none, first, all
+jmeter.save.saveservice.assertion_results=none
+jmeter.save.saveservice.output_format=xml
+jmeter.save.saveservice.data_type=true
+jmeter.save.saveservice.label=true
+jmeter.save.saveservice.response_code=true
+# response_data is not currently supported for CSV output
+jmeter.save.saveservice.response_data=true
+# Save ResponseData for failed samples
+jmeter.save.saveservice.response_data.on_error=false
+jmeter.save.saveservice.response_message=true
+jmeter.save.saveservice.successful=true
+jmeter.save.saveservice.thread_name=true
+jmeter.save.saveservice.time=true
+jmeter.save.saveservice.subresults=true
+jmeter.save.saveservice.assertions=true
+jmeter.save.saveservice.latency=true
+# Only available with HttpClient4
+jmeter.save.saveservice.connect_time=true
+jmeter.save.saveservice.samplerData=false
+jmeter.save.saveservice.responseHeaders=false
+jmeter.save.saveservice.requestHeaders=false
+jmeter.save.saveservice.encoding=false
+jmeter.save.saveservice.bytes=true
+# Only available with HttpClient4
+#jmeter.save.saveservice.sent_bytes=true
+#jmeter.save.saveservice.url=false
+#jmeter.save.saveservice.filename=false
+jmeter.save.saveservice.hostname=false
+jmeter.save.saveservice.thread_counts=true
+jmeter.save.saveservice.sample_count=false
+#jmeter.save.saveservice.idle_time=true
+
+9. Restart the Jmeter.
+10. Develop any test plan.
+11. Add simple data writer/summary listener to ThreadGroup and create the test results in csv format.
+
+Before Running your test plan we should configure below fields in Simple Data Writer window panel,those are
+timeStamp
+elapsed
+label
+responseCode
+responseMessage
+threadName
+dataType
+success
+failureMessage
+bytes
+grpThreads
+allThreads
+Latency
+IdleTime
+
+
+12. Open Cmd prompt -> goto the jmeter/bin folder and enter the below command which saves all the results in HTML in a graphical format.
+ jmeter -g <Location of the test results csv file> -o  <Location of the HTML to save>
+
+
+References:
+https://learn-jmeter.blogspot.in/2016/10/how-to-generate-jmeter-report-dashboard.html
+https://www.youtube.com/watch?v=YbQHL8lTnZ4
+http://jmeter.apache.org/usermanual/generating-dashboard.html
+

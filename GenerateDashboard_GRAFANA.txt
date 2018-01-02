@@ -1,0 +1,40 @@
+How to generate Dashboard for Grafana.
+
+Welcome to the Grafana-Dashboard-Generator wiki!
+
+This app lets you automatically generate a Grafana dasbhoard with cumulative metrics and individual metrics for any Jmeter script. The app automatically parses the script and creates necessary JSON data objects in the file to create the dashboard JSON file. Each dashboard panel with have a auto generated query to influxdb.
+
+The following metrics are included for each individual HTTPSampler:
+
+percentile90 (response time)
+failure (transactions failed per interval)
+success (transactions passed per interval)
+The following metrics are included for the cumulative metric group:
+
+percentile90 (response time per interval)
+meanActiveThreads
+TotalTPS (Sum of Transactions Per Second of all transactions in the test plan per interval)
+failure (Sum of failures in the test per interval);
+How to use the app:
+
+Download the GenerateDashboard.jar file
+Copy it into any directory.
+Run the command as shown in the example:
+E:\Softwares\grafana-4.6.2.windows-x64\dashboard jars>java -jar GenerateDashboard.jar
+1.Enter a name for the Grafana dashboard:
+JmeterPortal
+2.Enter output file path (Example: /var/tmp/ on Linux OR like C:\tmp\output\ on Windows):
+E:\Softwares\grafana-4.6.2.windows-x64\dashboard jars\
+3.Enter path of script(example: /var/tmp/test.jmx in Linux OR like C:\tmp\test.jmx in Windows):
+E:\JMeter_Scripts\JmeterPortal\JmeterPortal.jmx
+Selected Script = E:\JMeter_Scripts\JmeterPortal\JmeterPortal.jmx
+Parsing the Jmeter script and looking for all HTTP transactions...
+The dashboard will contain the following transactions
+1.Jmeter_HomePage
+2.Jmeter_UserManualPage
+3.Jmeter_GeneratingDashboardPage
+Dashboard file successfully generated E:\Softwares\grafana-4.6.2.windows-x64\dashboard jars\JmeterPortal.jason
+
+
+References:
+https://github.com/tarun3kumar/Grafana-Dashboard-Generator

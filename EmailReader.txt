@@ -1,0 +1,17 @@
+How to read Emails from the server.
+
+Mail Server : Gmail
+
+1.	Download javax.mail.jar from the below url.
+	https://javaee.github.io/javamail/
+2.	Copy the jar from the download folder and paste it to the jmeter/lib folder.
+3.	Create a Testplan -> ThreadGroup -> Rightcllick select MailReaderSampler.
+4.	Add required data to Mail reader sampler. Before this, we have to know about the incoming email server, port number and protocol.
+5.	Enter protocol(Ex: imaps), Server Host(Ex:imap.gmail.com),Server port(Ex:993), Username(Ex:abcd@gmail.com), Password(Ex:********) & FOLDER to read emails from(Ex: INBOX).
+6.	Also enter Number of message to read. (ALL or specific number to read)
+7.	Check SSL at security settings.
+8.	Now, login to the mail -> goto settings -> goto Forwarding and POP/IMAP
+	At IMAP Acess : Enable IMAP
+9.	Goto MyAccount setting and Allow less secure apps : ON(To make sure any external clients access the mail(gmail) server.
+	https://myaccount.google.com/lesssecureapps
+8.	Goto Jmeter->Add View Listener Tree to ThreadGroup and run the script.
